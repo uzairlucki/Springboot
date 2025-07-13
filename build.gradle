@@ -1,0 +1,51 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.3'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.dps'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// Spring Boot Web for building REST APIs
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Spring Data JPA for database interaction
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Lombok (Optional, but highly recommended for boilerplate reduction)
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// --- MSSQL Driver ---
+	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+
+	// Remove or comment out other database drivers if you're only using MSSQL
+	// runtimeOnly 'com.h2database:h2'
+	// runtimeOnly 'org.postgresql:postgresql'
+	// runtimeOnly 'mysql:mysql-connector-java:8.0.33'
+
+	// Spring Boot DevTools for hot reloading during development
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Spring Boot Test for unit and integration testing
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
