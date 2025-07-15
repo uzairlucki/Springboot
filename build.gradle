@@ -39,11 +39,9 @@ dependencies {
 	// runtimeOnly 'org.postgresql:postgresql'
 	// runtimeOnly 'mysql:mysql-connector-java:8.0.33'
 
-	// Spring Boot DevTools for hot reloading during development
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-	// Spring Boot Test for unit and integration testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 
 tasks.named('test') {

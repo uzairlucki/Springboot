@@ -6,6 +6,7 @@ import com.dps.crud.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -16,6 +17,7 @@ public class EmployeeService {
 
 	// --- CREATE Operation ---
 	public Employee createEmployee(Employee employee) {
+		employee.setCreatedDate(LocalDateTime.now());
 		return employeeRepository.save(employee); // Saves a new employee to the database
 	}
 
@@ -41,6 +43,7 @@ public class EmployeeService {
 		employee.setEmail(employeeDetails.getEmail());
 		employee.setPosition(employeeDetails.getPosition());
 		employee.setSalary(employeeDetails.getSalary());
+		employee.setModifiedDate(LocalDateTime.now());
 
 		return employeeRepository.save(employee); // Saves the updated employee
 	}
